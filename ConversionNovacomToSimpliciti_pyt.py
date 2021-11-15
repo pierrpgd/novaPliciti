@@ -48,15 +48,15 @@ for row in arcpy.da.SearchCursor(FichierSource, ["SHAPE@", "CLE", "TYPECOL_00"])
 
 ## 3 ## Nettoyage des points
 
-# =============================================================================
-# for i in range(len(data)):
-#     if data[i] > 2:
-#         R = 6371
-#         distX = (math.radians(row.Y) - math.radians(row.Y - 1)) * math.cos(0.5*(math.radians(row.X) + math.radians(row.X - 1)))
-#         distY = math.radians(row.X) - math.radians(row.X - 1)
-#         distXY = R * math.sqrt( distX*distX + distY*distY )
-#         data["dist"][row] = distXY
-# =============================================================================
+R = 6371
+for i in range(len(data)):
+    if i > 0:
+        distX = (math.radians(data.loc[i,'Y']) - math.radians(data.loc[i - 1,'Y'])) * math.cos(0.5*(math.radians(data.loc[i,'X']) + math.radians(data.loc[i - 1,'X'])))
+        distY = math.radians(data.loc[i,'X']) - math.radians(data.loc[i - 1,'X'])
+        distXY = R * math.sqrt( distX*distX + distY*distY )
+        data.loc[i,"dist"] = distXY
+    else:
+        data.loc[i,"dist"] = 0
 
 ## 4 ## Export de la dataframe vers CSV
 
