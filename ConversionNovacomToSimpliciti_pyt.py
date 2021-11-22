@@ -159,3 +159,6 @@ data = data.drop(['dist','angle'], axis=1)
 data.loc[:,'index'] = data.index
 data = data.astype({"X": float, "Y": float, 'index': int})
 data.to_csv(CheminFichierSortie, index=False, sep=';')
+
+print("Opération terminée")
+print(CheminFichierSortie)
