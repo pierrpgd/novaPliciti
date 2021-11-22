@@ -5,3 +5,5 @@ Conversion des circuits issus de Novacom (Circuits+) vers Simpliciti (Editour)
 - Import du circuit Novacom en couche de polylignes
 - Transformation en couche de points
 - Calcul de la distance entre points
+- Calcul de l'angle entre 3 points
+- Nettoyage à partir de la distance et de l'angle
